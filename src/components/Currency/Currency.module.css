@@ -1,0 +1,264 @@
+.mainContainer {
+  align-items: center;
+  background: rgba(74, 86, 226, 0.1);
+  border-radius: 0px 0px 8px 8px;
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 12px;
+  width: fit-content;
+}
+
+.titlesContainer {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  justify-content: space-between;
+  padding: 13px 20px;
+  width: -webkit-fill-available;
+}
+
+.title {
+  color: #fff;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  width: fit-content;
+}
+
+.title:nth-child(2) {
+  margin-left: 26px;
+  margin-right: 66px;
+}
+
+.currenciesContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 8px 20px 2px;
+}
+
+.currencyContainer {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.currency {
+  color: #fff;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.currency:nth-child(2) {
+  margin-left: 88px;
+  margin-right: 76px;
+}
+
+.graphContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.graphStrokeContainer {
+  /* align-items: center; */
+  /* display: flex; */
+  /* justify-content: center; */
+  margin-top: -37px;
+  width: 100%;
+
+  background-color: linear-gradient(
+      0deg,
+      rgba(57, 0, 150, 0.2) 0%,
+      rgba(57, 0, 150, 0.2) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.6) 11.08%,
+      rgba(255, 255, 255, 0.32) 39.7%,
+      rgba(255, 255, 255, 0.16) 57.58%,
+      rgba(255, 255, 255, 0.09) 69.56%,
+      rgba(255, 255, 255, 0) 87.43%
+    );
+}
+
+.graphStrokeSvg {
+  stroke-width: 1px;
+  stroke: var(--dashboard-text, #ff868d);
+  margin-bottom: -70px;
+
+  /* height: 72px; */
+  /* width: fit-content; */
+}
+
+.graph {
+  width: 100%;
+
+  background-color: linear-gradient(
+      0deg,
+      rgba(57, 0, 150, 0.2) 0%,
+      rgba(57, 0, 150, 0.2) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.6) 11.08%,
+      rgba(255, 255, 255, 0.32) 39.7%,
+      rgba(255, 255, 255, 0.16) 57.58%,
+      rgba(255, 255, 255, 0.09) 69.56%,
+      rgba(255, 255, 255, 0) 87.43%
+    );
+}
+
+.graphSvg {
+  /* fill: linear-gradient(
+      0deg,
+      rgba(57, 0, 150, 0.2) 0%,
+      rgba(57, 0, 150, 0.2) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.6) 14.72%,
+      rgba(255, 255, 255, 0.32) 52.74%,
+      rgba(255, 255, 255, 0.16) 76.49%,
+      rgba(255, 255, 255, 0.09) 92.4%,
+      rgba(255, 255, 255, 0) 116.14%
+    ); */
+
+  height: 88px;
+  width: fit-content;
+}
+
+.graphStrokeElipseSvg {
+  fill: #563eaf;
+  stroke-width: 0.7px;
+  stroke: var(--dashboard-text, #ff868d);
+
+  width: 6px;
+  height: 6px;
+  flex-shrink: 0;
+}
+
+.graphStrokeElipseLeftContainer svg {
+  position: relative;
+  top: 61px;
+  left: 38px;
+}
+
+.graphStrokeElipseNumber {
+  color: var(--dashboard-text, #ff868d);
+  display: none;
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.graphStrokeElipseLeftContainer > .graphStrokeElipseNumber {
+  line-height: normal;
+  position: relative;
+  top: 52px;
+  left: 27px;
+}
+
+.graphStrokeElipseRightContainer svg {
+  position: relative;
+  top: 20px;
+  left: 242px;
+}
+
+.graphStrokeElipseRightContainer > .graphStrokeElipseNumber {
+  line-height: normal;
+  position: relative;
+  top: 10px;
+  left: 229px;
+}
+
+@media screen and (width >= 768px) {
+  .mainContainer {
+    width: 336px;
+    border-radius: 0;
+    height: 100%;
+    justify-content: space-between;
+    margin: 0;
+    width: -webkit-fill-available;
+  }
+
+  .titlesContainer {
+    justify-content: space-between;
+    padding: 12px 20px;
+  }
+
+  .title:nth-child(2) {
+    margin: 0;
+  }
+
+  .currenciesContainer {
+    width: -webkit-fill-available;
+  }
+
+  .currencyContainer {
+    justify-content: space-between;
+  }
+
+  .currency:nth-child(2) {
+    margin: 0;
+    margin-left: 45px;
+  }
+
+  .graph {
+    height: 100%;
+  }
+
+  /* .graphContainer {
+    width: -webkit-fill-available;
+  } */
+}
+
+@media screen and (width >= 1024px) {
+  .mainContainer {
+    height: auto;
+  }
+
+  .currenciesContainer {
+    padding-top: 0;
+    margin-top: 24px;
+    margin-bottom: 14px;
+  }
+
+  .graphContainer {
+    margin-top: -35px;
+    /* width: -webkit-fill-available; */
+  }
+
+  .graphStrokeElipseLeftContainer svg {
+    top: 79px;
+  }
+
+  .graphStrokeElipseLeftContainer > .graphStrokeElipseNumber {
+    display: block;
+    line-height: normal;
+    position: relative;
+    top: 88px;
+    left: 33px;
+    width: fit-content;
+  }
+
+  .graphStrokeElipseRightContainer > .graphStrokeElipseNumber {
+    display: block;
+    line-height: normal;
+    position: relative;
+    top: 29px;
+    left: 237px;
+    width: fit-content;
+  }
+}

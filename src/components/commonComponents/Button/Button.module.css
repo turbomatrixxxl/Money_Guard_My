@@ -1,0 +1,51 @@
+.button {
+  cursor: pointer;
+  width: 280px;
+  height: 50px;
+  flex-shrink: 1;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  padding: 13px 0;
+
+  text-align: center;
+  font-family: Poppins;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+
+  /* Button shadow */
+  box-shadow: 1px 9px 15px 0px rgba(0, 0, 0, 0.2);
+  transition: scale 250ms ease-in-out, box-shadow 250ms ease-in-out,
+    background 250ms ease-in-out;
+}
+
+.button:hover,
+.button:focus {
+  scale: 0.99;
+  box-shadow: rgba(0, 0, 0, 0.5) 3px 5px 8px 3px;
+  background: linear-gradient(90deg, #e86805, #9e001c 70%);
+  color: white;
+}
+
+.coloredButton {
+  background: var(
+    --button-gradient,
+    linear-gradient(97deg, #ffc727 -16.42%, #9e40ba 97.04%, #7000ff 150.71%)
+  );
+  color: var(--white, #fbfbfb);
+}
+
+.whiteButton {
+  background: #fcfcfc;
+  color: var(--text-button, #623f8b);
+}
+
+@media screen and (width >=768px) {
+  .button {
+    width: 300px;
+  }
+}

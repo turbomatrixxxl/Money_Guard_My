@@ -1,0 +1,22 @@
+.transactionManagerMainContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  width: 100%;
+  /* margin: 0; */
+}
+
+.transactionsListAndTableContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: -webkit-fill-available;
+  /* justify-content: center; */
+  width: 100%;
+  /* margin: 0; */
+}
+
+.transactionManagerModalsContainer {
+  margin: 0;
+}

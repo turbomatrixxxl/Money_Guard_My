@@ -1,0 +1,72 @@
+.chartContainer {
+  align-items: center;
+  display: flex;
+  flex-shrink: 0;
+  height: 280px;
+  justify-content: center;
+  width: 280px;
+  cursor: pointer;
+
+  transition: scale 250ms ease-in-out;
+}
+
+.chartContainer:hover {
+  cursor: pointer;
+  scale: 1.05;
+}
+
+.chartBalance {
+  display: flex;
+  gap: 5px;
+  color: var(--white, #fbfbfb);
+  text-align: center;
+  font-family: Poppins;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+
+  margin: 0 auto;
+
+  position: absolute;
+}
+
+.chart {
+  width: 100%;
+  height: 100%;
+}
+
+.tooltipContainer {
+  background-color: black;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  gap: 2px;
+  padding: 2px 6px;
+  position: fixed;
+  height: fit-content;
+  width: fit-content;
+  z-index: 100010000;
+}
+
+.tooltipNameContainer {
+  padding: 0;
+  margin: 0;
+}
+
+.tooltipSumContainer {
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+  height: fit-content;
+  width: fit-content;
+  padding: 0;
+  margin: 0;
+}
+
+.tooltipSumContainer div {
+  height: 14px;
+  width: 14px;
+  background-color: #fbfbfb;
+}

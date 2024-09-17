@@ -1,0 +1,68 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  margin-top: 52px;
+  width: 100%;
+}
+
+.inputWrapper {
+  position: relative;
+}
+
+.inputIcon {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 18px;
+}
+
+.inputError {
+  margin: 2px 0 0 0;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.eyeIcon {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 24px;
+}
+
+.error {
+  color: #ff4d4d;
+  margin-top: 10px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.buttonsContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+}
+
+.navLink {
+  color: #623f8b;
+  text-align: center;
+  text-decoration: none;
+}
+
+.navLink:hover {
+  text-decoration: underline;
+  color: white;
+}
+
+@media screen and (width >=768px) {
+  .form {
+    gap: 52px;
+  }
+}

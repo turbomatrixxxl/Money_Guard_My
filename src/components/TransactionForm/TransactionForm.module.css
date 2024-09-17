@@ -1,0 +1,271 @@
+.inputField input[type="number"]::-webkit-inner-spin-button,
+.inputField input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.modalContent {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding: 0 73px;
+  box-sizing: border-box;
+}
+
+.modalContent .closeButton {
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  padding: 0;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+}
+
+.modalContent .closeButton:hover {
+  transform: scale(1.1);
+  background-color: rgba(251, 251, 251, 1);
+}
+
+.modalContent .closeButton svg {
+  width: 16px;
+  height: 16px;
+  stroke: rgba(251, 251, 251, 1);
+}
+
+.closeButton:hover > svg {
+  stroke: red;
+}
+.formTitle {
+  color: rgba(251, 251, 251, 1);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 36px;
+  text-align: center; /* Asigură că titlul este centrat */
+}
+
+.modalContent form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  max-width: 394px;
+}
+
+.flexContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+
+.inputField select {
+  width: 100%;
+}
+
+.inputWrapper .inputField input,
+.inputWrapper .inputField select {
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  background-color: transparent;
+  width: 100%;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 27px;
+  color: rgba(255, 255, 255, 0.6);
+  transition: all 0.35s ease-in-out;
+}
+
+.inputWrapper .inputField select {
+  cursor: pointer;
+  color: #ffffff99;
+}
+
+.inputWrapper .inputField select option {
+  cursor: pointer;
+  box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
+  background-color: rgba(83, 61, 186, 0.7);
+  color: rgba(251, 251, 251, 1);
+}
+
+form .inputWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.inputWrapper .inputField input[type="number"]::-webkit-inner-spin-button,
+.inputWrapper .inputField input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.inputField input:focus,
+.inputField select:focus {
+  border-bottom: 1px solid #ffffff;
+  color: #ffffff;
+  transition: all 0.35s ease-in-out;
+}
+
+.inputField input::placeholder {
+  color: #ffffff99;
+  transition: all 0.35s ease-in-out;
+}
+
+.inputField input:focus::placeholder {
+  color: #ffffff;
+}
+
+.inputField p {
+  color: rgb(255, 134, 141);
+  font-size: 14px;
+  padding-left: 12px;
+}
+
+.inputField.date {
+  position: relative;
+}
+
+.inputField.date input {
+  cursor: pointer;
+  width: 100%;
+  color: #ffffff99;
+  transition: all 0.5s ease 0s;
+}
+
+.inputField.date input:focus {
+  color: #ffffff;
+  transition: all 0.5s ease 0s;
+}
+
+.icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #734aef;
+  width: 24px;
+  height: 24px;
+  pointer-events: none;
+}
+
+form .buttonsWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.switcheWrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.switcheWrapper span {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.switcheWrapper span.income {
+  color: rgba(255, 182, 39, 1);
+  font-weight: bold;
+}
+
+.switcheWrapper span.expense {
+  color: rgba(255, 134, 141, 1);
+  font-weight: bold;
+}
+
+.switcheWrapper label {
+  width: 80px;
+  height: 40px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 1);
+  position: relative;
+  display: block;
+
+  cursor: pointer;
+  box-shadow: inset 0px 5px 15px rgba(0, 0, 0, 0.4),
+    inset 0 -5px 15px rgba(255, 255, 255, 0.4);
+  transition: all 0.5s ease 0s;
+}
+
+.switcheWrapper label:after {
+  content: "+";
+  color: rgba(255, 255, 255, 1);
+  width: 44px;
+  height: 44px;
+  border-radius: 44px;
+  position: absolute;
+  top: -2px;
+  left: -4px;
+  background-color: rgba(255, 182, 39, 1);
+  box-shadow: 0px 6px 15px 0px rgba(255, 199, 39, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 35px;
+  transition: all 0.5s ease 0s;
+}
+
+.switcheWrapper input {
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+
+.switcheWrapper input:checked + label:after {
+  content: "-";
+  font-size: 50px;
+
+  left: 84px;
+  transform: translateX(-100%);
+  background-color: rgba(255, 134, 141, 1);
+  box-shadow: 0px 6px 15px 0px rgba(255, 134, 141, 0.5);
+}
+
+label:active::after {
+  width: 65px;
+}
+
+@media screen and (max-width: 768px) {
+  .modalContent .closeButton {
+    display: none;
+  }
+
+  .flexContainer {
+    flex-direction: column;
+    row-gap: 40px;
+    margin: 0 auto;
+    max-width: 100%;
+  }
+  .flexContainer .inputField .date {
+    max-width: 280px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .modalContent {
+    padding: 40px 73px;
+  }
+
+  .modalContent form {
+    gap: 40px;
+  }
+}

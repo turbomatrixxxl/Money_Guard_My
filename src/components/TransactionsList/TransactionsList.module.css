@@ -1,0 +1,31 @@
+.transactionsListMainContainer {
+  /* margin-top: 32px; */
+  align-items: center;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  min-width: fit-content;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #7000ff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #9e40ba;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(216, 156, 78);
+}

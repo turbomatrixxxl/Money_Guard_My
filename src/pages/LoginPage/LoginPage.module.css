@@ -1,0 +1,90 @@
+@import "../../styles/variables.css";
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: var(--gradient-background);
+  position: relative;
+  overflow: auto;
+  width: 100vw;
+}
+
+.imageLeft,
+.imageRight {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  z-index: 1;
+}
+
+.imageLeft {
+  left: 0;
+}
+
+.imageRight {
+  right: 0;
+}
+
+.imageLeft img,
+.imageRight img {
+  display: none;
+}
+
+.logInContainer {
+  position: relative;
+  z-index: 2;
+  background: var(--form-background);
+  box-shadow: var(--box-shadow);
+  backdrop-filter: var(--blur);
+  height: 100%;
+  padding: 0 20px;
+  padding-top: 97px;
+  width: 100%;
+}
+
+.logoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 51.68px;
+}
+
+.logoContainer img {
+  width: 25.461px;
+  height: 25.461px;
+}
+
+.logoContainer span {
+  color: var(--text-color-light);
+  font-size: 26.963px;
+}
+
+@media screen and (width >= 768px) {
+  .logInContainer {
+    border-radius: var(--border-radius);
+    flex-shrink: 0;
+    padding: 80px 62px;
+    height: fit-content;
+    width: fit-content;
+  }
+
+  .imageLeft img,
+  .imageRight img {
+    display: inherit;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .logoContainer img {
+    width: 35.951px;
+    height: 35.974px;
+  }
+
+  .logoContainer span {
+    font-size: var(--font-size-large);
+  }
+}

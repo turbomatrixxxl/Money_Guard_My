@@ -68,6 +68,7 @@
   text-align: center;
   font-size: 18px;
   color: #fff;
+  padding: 40px 0;
 }
 
 @media screen and (width >= 1024px) {

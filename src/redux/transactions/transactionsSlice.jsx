@@ -11,6 +11,9 @@ const initialState = {
   categories: [],
   items: [],
   isLoading: false,
+  successDelete: false,
+  successAdd: false,
+  successUpdate: false,
   error: null,
   summary: [],
   trasactionIdForDelete: "",
@@ -18,6 +21,26 @@ const initialState = {
     id: "",
     type: "",
   },
+};
+
+const handlePending = (state) => {
+  state.summary = [];
+  state.categories = [];
+  state.isLoading = true;
+  state.successDelete = false;
+  state.successAdd = false;
+  state.successUpdate = false;
+  state.error = null;
+};
+
+const handleRejected = (state, action) => {
+  state.summary = [];
+  state.categories = [];
+  state.isLoading = false;
+  state.successDelete = false;
+  state.successAdd = false;
+  state.successUpdate = false;
+  state.error = action.payload;
 };
 
 const transactionsSlice = createSlice({
@@ -34,45 +57,56 @@ const transactionsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       // * Add transaction
-      .addCase(addTransaction.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(addTransaction.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
-      })
+      .addCase(addTransaction.pending, handlePending)
+      .addCase(addTransaction.rejected, handleRejected)
       .addCase(addTransaction.fulfilled, (state, action) => {
+        state.summary = [];
+        state.categories = [];
         state.isLoading = false;
+        state.successDelete = false;
+        state.successAdd = true;
+        state.successUpdate = false;
         state.error = null;
+        state.trasactionIdForDelete = "";
+        state.transactionForUpdate = {
+          id: "",
+          type: "",
+        };
+        // console.log(action.payload);
+
         state.items.push(action.payload);
       })
 
       // * Delete transaction
-      .addCase(deleteTransaction.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(deleteTransaction.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
-      })
+      .addCase(deleteTransaction.pending, handlePending)
+      .addCase(deleteTransaction.rejected, handleRejected)
       .addCase(deleteTransaction.fulfilled, (state, action) => {
+        state.trasactionIdForDelete = "";
+        state.transactionForUpdate = {
+          id: "",
+          type: "",
+        };
+        state.summary = [];
+        state.categories = [];
         state.isLoading = false;
+        state.successDelete = true;
+        state.successAdd = false;
+        state.successUpdate = false;
         state.error = null;
         state.items = state.items.filter(
           (transaction) => transaction.id !== action.payload.id
         );
+        // console.log(state.items);
       })
 
       // * Update transaction
-      .addCase(updateTransaction.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(updateTransaction.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
-      })
+      .addCase(updateTransaction.pending, handlePending)
+      .addCase(updateTransaction.rejected, handleRejected)
       .addCase(updateTransaction.fulfilled, (state, action) => {
         state.isLoading = false;
+        state.successDelete = false;
+        state.successAdd = false;
+        state.successUpdate = true;
         state.error = null;
         const index = state.items.findIndex(
           (transaction) => transaction.id === action.payload.id
@@ -83,33 +117,31 @@ const transactionsSlice = createSlice({
       })
 
       // * Fetch transactions
-      .addCase(fetchTransactions.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(fetchTransactions.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
-      })
+      .addCase(fetchTransactions.pending, handlePending)
+      .addCase(fetchTransactions.rejected, handleRejected)
       .addCase(fetchTransactions.fulfilled, (state, action) => {
         state.isLoading = false;
+        state.successDelete = false;
+        state.successAdd = false;
+        state.successUpdate = false;
         state.error = null;
         state.items = action.payload;
+        // console.log(state.items);
       })
 
       // * Fetch transaction categories
-      .addCase(fetchTransactionCategories.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(fetchTransactionCategories.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
-      })
+      .addCase(fetchTransactionCategories.pending, handlePending)
+      .addCase(fetchTransactionCategories.rejected, handleRejected)
       .addCase(fetchTransactionCategories.fulfilled, (state, action) => {
         // console.log(action.payload);
 
         state.isLoading = false;
+        state.successDelete = false;
+        state.successAdd = false;
+        state.successUpdate = false;
         state.error = null;
         state.categories = action.payload;
+        state.trasactionIdForDelete = "";
       });
   },
 });

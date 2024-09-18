@@ -13,3 +13,6 @@ export const selectTransactionForUpdate = (state) =>
 export const selectTransactionSummary = (state) => state.transactions.summary;
 export const selectTransactionIdForDelete = (state) =>
   state.transactions.trasactionIdForDelete;
+export const selectSuccessDelete = (state) => state.transactions.successDelete;
+export const selectSuccessAdd = (state) => state.transactions.successAdd;
+export const selectSuccessUpdate = (state) => state.transactions.successUpdate;

@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 import { Outlet } from "react-router-dom";
 
 import Sidebar from "../../components/Sidebar/Sidebar";
@@ -16,13 +16,18 @@ import Footer from "../../components/Footer";
 import { useDispatch } from "react-redux";
 import { logOut } from "../../redux/auth/operationsAuth";
 import { useAuth } from "../../hooks/useAuth";
+import { useTransactionsSucces } from "../../hooks/useTransactionsSucces";
 
 import styles from "./DashboardPage.module.css";
+import Notiflix from "notiflix";
 
 function DashboardPage() {
   const [isLogoutModalVisible, toggleIsLogoutModalVisible] = useToggle(false);
   const { user } = useAuth();
   const dispatch = useDispatch();
+  const { successAdd, successsDelete, successsUpdate, successsError } =
+    useTransactionsSucces();
+  // console.log(successAdd);
 
   const handleLogout = () => {
     dispatch(logOut());
@@ -31,6 +36,8 @@ function DashboardPage() {
   function handleLogoutModal() {
     toggleIsLogoutModalVisible();
   }
+
+  useEffect(() => {});
 
   return (
     <div className={styles.allContainer}>
@@ -68,6 +75,33 @@ function DashboardPage() {
       </Modal>
       <Header handleLogoutModal={handleLogoutModal} />
       <main className={styles.main}>
+        {successAdd &&
+          Notiflix.Notify.success("Transaction added successfully!", {
+            position: "center-top",
+            borderRadius: "8px",
+            showOnlyTheLastOne: "true",
+          })}
+        {successsDelete &&
+          Notiflix.Notify.success("Transaction deleted successfully!", {
+            position: "center-top",
+            borderRadius: "8px",
+            showOnlyTheLastOne: "true",
+          })}
+        {successsUpdate &&
+          Notiflix.Notify.success("Transaction updated successfully!", {
+            position: "center-top",
+            borderRadius: "8px",
+            showOnlyTheLastOne: "true",
+          })}
+        {successsError &&
+          Notiflix.Notify.failure(
+            "Ooops...! Operation failed. Please try again later.",
+            {
+              position: "center-top",
+              borderRadius: "8px",
+              showOnlyTheLastOne: "true",
+            }
+          )}
         <Sidebar />
         <div className={styles.dashboardContainer}>
           <Suspense fallback={<Loader />}>

@@ -42,14 +42,21 @@ const TransactionsList = ({ openEditModal, openDeleteModal }) => {
 
   return (
     <ul className={styles.transactionsListMainContainer}>
-      {sortedAllTransactions.map((transaction) => (
-        <TransactionItem
-          key={transaction.id}
-          transaction={transaction}
-          openEditModal={openEditModal}
-          openDeleteModal={openDeleteModal}
-        />
-      ))}
+      {transactions.length > 0 ? (
+        sortedAllTransactions.map((transaction) => (
+          <TransactionItem
+            key={transaction.id}
+            transaction={transaction}
+            openEditModal={openEditModal}
+            openDeleteModal={openDeleteModal}
+          />
+        ))
+      ) : (
+        <li className={styles.noDataMessage}>
+          Looks like there's nothing here yet! Time to start spending... or
+          maybe saving!
+        </li>
+      )}
     </ul>
   );
 };

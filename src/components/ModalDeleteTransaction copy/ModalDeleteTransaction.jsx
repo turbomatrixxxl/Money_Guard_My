@@ -11,9 +11,11 @@ import {
 } from "../../redux/transactions/operationsTransactions";
 import { selectTransactionIdForDelete } from "../../redux/transactions/selectorsTransactions";
 import { toast } from "react-toastify";
+import { refreshUser } from "../../redux/auth/operationsAuth";
 
 const ModalDeleteTransaction = ({ closeModal }) => {
   const dispatch = useDispatch();
+
   const trasactionIdForDelete = useSelector(selectTransactionIdForDelete);
   const screenCondition = useMediaQuery({ query: "(min-width: 768px)" });
 
@@ -28,7 +30,7 @@ const ModalDeleteTransaction = ({ closeModal }) => {
       .then(() => {
         closeModal();
         // Optional: Dispatch a refresh action if needed
-
+        dispatch(refreshUser());
         dispatch(fetchTransactions());
       })
       .catch((error) => {

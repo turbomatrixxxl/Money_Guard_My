@@ -3,7 +3,6 @@ import { useEffect, useRef } from "react";
 import { useMediaQuery } from "react-responsive";
 import { useAuth } from "../../../hooks/useAuth";
 
-import styles from "./TransactionModal.module.css";
 import { useDispatch } from "react-redux";
 import { logOut } from "../../../redux/auth/operationsAuth";
 import useToggle from "../../../hooks/useToggle";
@@ -12,6 +11,8 @@ import LogoContainer from "../../LogoContainer/LogoContainer";
 import LogoutButton from "../../LogoutButton/LogoutButton";
 import Button from "../Button";
 import Header from "../../Header/Header";
+
+import styles from "./TransactionModal.module.css";
 
 const TransactionModal = ({ children, closeModal }) => {
   const [isLogoutModalVisible, toggleIsLogoutModalVisible] = useToggle(false);

@@ -24,22 +24,14 @@ const initialState = {
 };
 
 const handlePending = (state) => {
-  state.summary = [];
-  state.categories = [];
   state.isLoading = true;
-  state.successDelete = false;
-  state.successAdd = false;
-  state.successUpdate = false;
+
   state.error = null;
 };
 
 const handleRejected = (state, action) => {
-  state.summary = [];
-  state.categories = [];
   state.isLoading = false;
-  state.successDelete = false;
-  state.successAdd = false;
-  state.successUpdate = false;
+
   state.error = action.payload;
 };
 

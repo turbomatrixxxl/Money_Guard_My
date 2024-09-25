@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   updateTransaction,
   addTransaction,
+  fetchTransactions,
 } from "../../redux/transactions/operationsTransactions";
 import { fetchTransactionCategories } from "../../redux/transactions/operationsTransactions"; // Import the new action
 import { refreshUser } from "../../redux/auth/operationsAuth";
@@ -22,6 +23,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import enUS from "date-fns/locale/en-US";
 
 import styles from "./TransactionForm.module.css";
+import Notiflix from "notiflix";
 
 registerLocale("en-US", enUS);
 
@@ -41,6 +43,8 @@ const TransactionForm = ({
   }, [dispatch]);
 
   const transactionCategories = useSelector(selectTransactionCategories);
+  console.log(transactionCategories);
+
   const transactionForUpdate = useSelector(selectTransactionForUpdate);
 
   const isInitialIncomeTab = isEditMode
@@ -49,13 +53,27 @@ const TransactionForm = ({
 
   const [isOnIncomeTab, setIsOnIncomeTab] = useState(isInitialIncomeTab);
   const screenCondition = useMediaQuery({ query: "(min-width: 768px)" });
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(
+    isEditMode ? new Date(currentTransactionDate) : new Date()
+  );
   const [startValueDate, setStartValueDate] = useState(currentTransactionDate);
 
-  const initialValues = {
-    amount: "",
-    comment: "",
-  };
+  // const initialValues = {
+  //   amount: "",
+  //   comment: "",
+  // };
+
+  const initialValues = isEditMode
+    ? {
+        amount: Math.abs(currentTransactionAmount).toString(),
+        comment: currentTransactionComment,
+        category: selectValue,
+      }
+    : {
+        amount: "",
+        comment: "",
+        category: "",
+      };
 
   const validationSchema = isOnIncomeTab
     ? Yup.object({
@@ -73,11 +91,14 @@ const TransactionForm = ({
     const transactionData = {
       transactionDate: startDate,
       type: isOnIncomeTab ? "INCOME" : "EXPENSE",
-      categoryId: transactionCategories.find(
-        (cat) => cat.name === (values.category || "Income")
-      ).id,
+      categoryId: isOnIncomeTab
+        ? transactionCategories.find(
+            (cat) => cat.name === (values.category || "Income")
+          ).id
+        : transactionCategories.find((cat) => cat.name === values.category).id,
       comment: values.comment,
-      amount: isOnIncomeTab ? values.amount : 0 - values.amount,
+      // amount: isOnIncomeTab ? values.amount : 0 - values.amount,
+      amount: parseFloat(values.amount) * (isOnIncomeTab ? 1 : -1),
     };
 
     const action = isEditMode
@@ -92,10 +113,16 @@ const TransactionForm = ({
       .then(() => {
         closeModal();
         dispatch(refreshUser());
+        dispatch(fetchTransactions());
       })
       .catch((error) => {
         setStatus({ success: false, error: error });
         setSubmitting(false);
+        Notiflix.Notify.failure(
+          isEditMode
+            ? "Failed to update transaction. Please try again."
+            : "Failed to add transaction. Please try again."
+        );
       });
   };
 
@@ -227,7 +254,7 @@ const TransactionForm = ({
 
 export const EditTransactionForm = ({ closeModal }) => {
   const transactionForUpdate = useSelector(selectTransactionForUpdate);
-  console.log(transactionForUpdate);
+  // console.log(transactionForUpdate);
 
   const transactions = useSelector(selectTransactions);
   // console.log(transactions);
@@ -237,11 +264,9 @@ export const EditTransactionForm = ({ closeModal }) => {
   );
   // console.log(currentTransaction);
 
-  const currentTransactionDate = new Date(
-    currentTransaction.transactionDate
-  ).toLocaleDateString();
+  const currentTransactionDate = new Date(currentTransaction.transactionDate);
 
-  // console.log(currentTransactionDate);
+  console.log(currentTransactionDate);
 
   const categories = useSelector(selectTransactionCategories);
   // console.log(categories);

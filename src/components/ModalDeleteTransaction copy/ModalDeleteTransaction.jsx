@@ -10,8 +10,8 @@ import {
   fetchTransactions,
 } from "../../redux/transactions/operationsTransactions";
 import { selectTransactionIdForDelete } from "../../redux/transactions/selectorsTransactions";
-import { toast } from "react-toastify";
 import { refreshUser } from "../../redux/auth/operationsAuth";
+import Notiflix from "notiflix";
 
 const ModalDeleteTransaction = ({ closeModal }) => {
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ const ModalDeleteTransaction = ({ closeModal }) => {
 
   const handleDeleteClick = () => {
     if (!trasactionIdForDelete) {
-      toast.error("Transaction ID not found.");
+      Notiflix.Notify.failure("Transaction ID not found.");
       return;
     }
 
@@ -34,7 +34,9 @@ const ModalDeleteTransaction = ({ closeModal }) => {
         dispatch(fetchTransactions());
       })
       .catch((error) => {
-        toast.error("Failed to delete transaction. Please try again.");
+        Notiflix.Notify.failure(
+          "Failed to delete transaction. Please try again."
+        );
         console.error(error);
       });
   };

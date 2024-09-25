@@ -4,7 +4,10 @@ import {
   setTransactionIdForDelete,
 } from "../../redux/transactions/transactionsSlice";
 import { selectTransactionCategories } from "../../redux/transactions/selectorsTransactions";
-import { fetchTransactionCategories } from "../../redux/transactions/operationsTransactions";
+import {
+  fetchTransactionCategories,
+  fetchTransactions,
+} from "../../redux/transactions/operationsTransactions";
 import icons from "../../assets/images/icons/sprite.svg";
 import styles from "./TransactionTableRow.module.css";
 import { useEffect } from "react";
@@ -32,7 +35,12 @@ const TransactionTableRow = ({
 
   useEffect(() => {
     dispatch(fetchTransactionCategories());
+    dispatch(fetchTransactions());
   }, [dispatch]);
+
+  // useEffect(() => {
+  //   return () => dispatch(fetchTransactions());
+  // }, [dispatch]);
 
   if (!transaction) return null;
 
@@ -47,7 +55,7 @@ const TransactionTableRow = ({
     if (!categories || categories.length === 0) {
       return "Loading..."; // Sau alt fallback
     }
-    const category = categories.find((cat) => cat.id === categoryId);
+    const category = categories?.find((cat) => cat.id === categoryId);
     return category ? category.name : "Unknown";
   };
 
@@ -86,8 +94,7 @@ const TransactionTableRow = ({
         <button
           className={styles.editButton}
           type="button"
-          onClick={handleEditClick}
-        >
+          onClick={handleEditClick}>
           <svg className={styles.editIcon}>
             <use href={`${icons}#icon-edit`}></use>
           </svg>
@@ -97,8 +104,7 @@ const TransactionTableRow = ({
         <button
           className={styles.deleteButton}
           type="button"
-          onClick={handleDeleteClick}
-        >
+          onClick={handleDeleteClick}>
           Delete
         </button>
       </td>

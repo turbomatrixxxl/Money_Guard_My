@@ -43,7 +43,7 @@ const TransactionForm = ({
   }, [dispatch]);
 
   const transactionCategories = useSelector(selectTransactionCategories);
-  console.log(transactionCategories);
+  // console.log(transactionCategories);
 
   const transactionForUpdate = useSelector(selectTransactionForUpdate);
 
